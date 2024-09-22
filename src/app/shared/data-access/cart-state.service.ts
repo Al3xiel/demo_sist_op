@@ -2,6 +2,7 @@ import {inject, Injectable, Signal} from "@angular/core";
 import {ProductItemCart} from "../interfaces/product.interface";
 import {signalSlice} from "ngxtension/signal-slice";
 import {StorageService} from "./storage.service";
+import {map, Observable} from "rxjs";
 
 interface State {
   products: ProductItemCart[];
