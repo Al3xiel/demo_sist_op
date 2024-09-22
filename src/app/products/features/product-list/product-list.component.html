@@ -1,0 +1,26 @@
+<div class="mx-auto max-w-screen-xl">
+
+  @switch (productsState.state.status()){
+    @case ('loading'){
+      <div class="flex items-center justify-center h-96">
+        <div class="w-12 h-12 border-2 border-turquoise-500 rounded-full animate-spin"><p>___</p></div>
+      </div>
+    }
+    @case ('error'){
+      <p>error...</p>
+    }
+    @default {
+      <div class="flex justify-end my-6">
+        <button type="button"
+                (click)="changePage()"
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none dark:focus:ring-blue-800">Cambiar página</button>
+      </div>
+      <div class="grid grid-cols-[repeat(4,300px)] gap-8" >
+        @for (product of productsState.state().products; track product){
+          <app-product-card class="block" [product]="product" (addToCart)="addToCart($event)"></app-product-card>
+        }
+      </div>
+    }
+  }
+</div>
+
